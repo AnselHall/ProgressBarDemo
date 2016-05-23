@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black1">#e0000000</color>
+
+    <color name="message_blue">#80cbc4</color>
+    <color name="message_grow">#ffb74d</color>
+    <color name="text_color_000000">#000000</color>
+    <color name="text_color_8b8b8a">#8b8b8a</color>
+    <color name="text_color_747575">#747575</color>
+    <color name="text_color_656565">#656565</color>
+    <color name="text_color_656666">#656666</color>
+    <color name="text_color_80cbc4">#80cbc4</color>
+    <color name="text_color_323333">#323333</color>
+    <color name="text_color_909191">#909191</color>
+    <color name="text_color_c3c4c4">#c3c4c4</color>
+    <color name="text_color_dddede">#dddede</color>
+    <color name="text_color_e3e6e6">#e3e6e6</color>
+    <color name="text_color_3C5B9B">#3C5B9B</color>
+    <color name="text_color_CACCCC">#CACCCC</color>
+
+    <color name="text_house_type">#9a9a9a</color>
+    <color name="text_gray">#bcbcbc</color>
+    <color name="text_price_bg">#ef5350</color>
+    <color name="text_55f57c00">#55f57c00</color>
+    <color name="house_type_orange">#f26c0c</color>
+    <color name="list_view_item_normal">#fafafa</color>
+    <color name="list_view_item_pressed">#d4d4d4</color>
+    <color name="dialog_gray_bg">#ebebeb</color>
+    <color name="dialog_black_bg">#e6000000</color>
+    <color name="recommend_image_normal">#88000000</color>
+    <color name="all_bg">#fafafa</color>
+
+
+    <!--<color name="text_color_28A4B0">#28A4B0</color>-->
+    <color name="text_color_4a4a4a">#4a4a4a</color>
+    <color name="text_color_3A3A48">#3A3A48</color>
+    <color name="text_color_28A4B0">#28A4B0</color>
+    <color name="text_color_606060">#606060</color>
+    <color name="text_color_E6E6E9">#E6E6E9</color>
+    <color name="text_color_C0C0C8">#C0C0C8</color>
+    <color name="text_color_9D9DA3">#9D9DA3</color>
+    <color name="text_color_F8F8F9">#F8F8F9</color>
+    <color name="text_color_D0021B">#D0021B</color>
+    <color name="text_color_6B6B76">#6B6B76</color>
+    <color name="text_color_F2F4F4">#F2F4F4</color>
+    <color name="text_color_D8D8D8">#D8D8D8</color>
+    <color name="text_color_F9FAFA">#F9FAFA</color>
+    <color name="text_color_09091A">#09091A</color>
+
+
+    <color name="calendar_grid_select_bg">#33B5E5</color>
+    <color name="user_introduce_text_color">#b9b9b9</color>
+    <color name="head_border_gray_color">#eff0f0</color>
+    <color name="search_bg_color">#edeeee</color>
+    <color name="search_border_color">#bcbdbd</color>
+    <color name="search_history_bg">#959696</color>
+    <color name="chat_message_left_bg">#f0f0f0</color>
+    <color name="btn_white_stoke">#e3e6e6</color>
+
+
+    <color name="city_text_bg">#eeeeee</color>
+    <color name="book_item_bg">#f4f5f5</color>
+    <color name="btn_light_bg">#f6f7f7</color>
+
+    <color name="msg_item_del_bg">#e53935</color>
+
+    <color name="specify_country_text">#656666</color>
+    <color name="specify_country_bg">#f0f0f0</color>
+    <color name="add_picture_tag_et_bg">#00000000</color>
+
+    <color name="bgColor1">#fff5f7f7</color>
+    <color name="bgColor2">#ffe3e5e5</color>
+    <color name="bgColor3">#dc191a1a</color>
+    <color name="bgColor4">#dc323333</color>
+    <color name="bg_color_00000000">#00000000</color>
+    <color name="bg_color_f9fafa">#f9fafa</color>
+    <color name="bg_color_e2e3e3">#e2e3e3</color>
+    <color name="bg_color_e3e6e6">#E3E6E6</color>
+    <color name="bg_color_88f5f7f7">#88F5F7F7</color>
+    <color name="bg_color_f5f7f7">#f5f7f7</color>
+    <color name="bg_color_f6f7f7">#f6f7f7</color>
+    <color name="bg_color_79C7CF">#79C7CF</color>
+    <color name="bg_color_CDCDD3">#CDCDD3</color>
+    <color name="bg_color_D9D9DE">#D9D9DE</color>
+
+    <color name="textColor1">#ffe3e5e5</color>
+    <color name="textColor2">#e9611f</color>
+    <color name="textColor3">#ff9027</color>
+    <color name="text9a9289">#9a9289</color>
+    <color name="tv_dialog_bg">#7a7a7a</color>
+    <color name="side_bar_bg">#b9b9b9</color>
+
+
+    <drawable name="book_enable_bg">#3A3A48</drawable>
+    <drawable name="book_un_enable_bg">#B2B2BA</drawable>
+
+    <drawable name="recommend_image_normal">#33000000</drawable>
+    <drawable name="recommend_image_press">#00000000</drawable>
+
+    <drawable name="selector_ebebeb">#ebebeb</drawable>
+    <drawable name="selector_cacacb">#cacacb</drawable>
+
+    <drawable name="transparent">#00000000</drawable>
+
+</resources>
