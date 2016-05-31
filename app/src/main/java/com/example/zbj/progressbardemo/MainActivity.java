@@ -1,7 +1,9 @@
 package com.example.zbj.progressbardemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.zbj.progressbardemo.widget.RangeSeekBar;
@@ -20,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         registerListener();
+    }
+
+    public void order(View view) {
+        startActivity(new Intent(this, OrderStateProgressActivity.class));
     }
 
     private void registerListener() {

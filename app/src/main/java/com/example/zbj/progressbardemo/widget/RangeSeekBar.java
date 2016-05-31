@@ -1,20 +1,3 @@
-/*
-Copyright 2015 Alex Florescu
-Copyright 2014 Stephan Tittel and Yahoo Inc.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 package com.example.zbj.progressbardemo.widget;
 
 import android.content.Context;
@@ -53,11 +36,6 @@ import java.math.BigDecimal;
  * Improved {@link MotionEvent} handling for smoother use, anti-aliased painting for improved aesthetics.
  *
  * @param <T> The Number type of the range values. One of Long, Double, Integer, Float, Short, Byte or BigDecimal.
- * @author Stephan Tittel (stephan.tittel@kom.tu-darmstadt.de)
- * @author Peter Sinnott (psinnott@gmail.com)
- * @author Thomas Barrasso (tbarrasso@sevenplusandroid.org)
- * @author Alex Florescu (alex@florescu.org)
- * @author Michael Keppler (bananeweizen@gmx.de)
  */
 public class RangeSeekBar<T extends Number> extends ImageView {
     /**
@@ -79,8 +57,11 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     public static final int TEXT_LATERAL_PADDING_IN_DP = 3;
 
     private static final int INITIAL_PADDING_IN_DP = 8;
+    //文字默认大小 dp
     private static final int DEFAULT_TEXT_SIZE_IN_DP = 14;
+    //文字距离底部的默认距离 dp
     private static final int DEFAULT_TEXT_DISTANCE_TO_BUTTON_IN_DP = 8;
+    //文字距离顶部的默认距离 (padding) dp
     private static final int DEFAULT_TEXT_DISTANCE_TO_TOP_IN_DP = 8;
 
     private static final int LINE_HEIGHT_IN_DP = 1;
@@ -135,6 +116,8 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     private Matrix mThumbShadowMatrix = new Matrix();
 
     private boolean mActivateOnDefaultValues;
+    //从XML中获得的文字距离底部的距离,
+    private float textDistanceToBottom;
 
 
     public RangeSeekBar(Context context) {
@@ -152,6 +135,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         init(context, attrs);
     }
 
+    //从属性文件中,提取数字的值.
     @SuppressWarnings("unchecked")
     private T extractNumericValueFromAttributes(TypedArray a, int attribute, int defaultValue) {
         TypedValue tv = a.peekValue(attribute);
@@ -209,6 +193,10 @@ public class RangeSeekBar<T extends Number> extends ImageView {
                 mDefaultColor = a.getColor(R.styleable.RangeSeekBar_defaultColor, Color.GRAY);
                 mAlwaysActive = a.getBoolean(R.styleable.RangeSeekBar_alwaysActive, false);
 
+
+                textDistanceToBottom = a.getDimension(R.styleable.RangeSeekBar_textDistanceToBottom,DEFAULT_TEXT_DISTANCE_TO_BUTTON_IN_DP);
+                float  textDistanceToTop =  a.getDimension(R.styleable.RangeSeekBar_textDistanceToTop,DEFAULT_TEXT_DISTANCE_TO_TOP_IN_DP);
+//                Log.e("tag", "init: textDistanceToBottom = " + textDistanceToBottom );
                 Drawable normalDrawable = a.getDrawable(R.styleable.RangeSeekBar_thumbNormal);
                 if (normalDrawable != null) {
                     thumbImage = BitmapUtil.drawableToBitmap(normalDrawable);
@@ -251,7 +239,8 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         mTextSize = PixelUtil.dpToPx(context, DEFAULT_TEXT_SIZE_IN_DP);
         mDistanceToTop = PixelUtil.dpToPx(context, DEFAULT_TEXT_DISTANCE_TO_TOP_IN_DP);
         mTextOffset = !mShowTextAboveThumbs ? 0 : this.mTextSize + PixelUtil.dpToPx(context,
-                DEFAULT_TEXT_DISTANCE_TO_BUTTON_IN_DP) + this.mDistanceToTop;
+                (int)textDistanceToBottom) + this.mDistanceToTop;
+//                DEFAULT_TEXT_DISTANCE_TO_BUTTON_IN_DP) + this.mDistanceToTop;
 
         mRect = new RectF(padding,
                 mTextOffset + mThumbHalfHeight - barHeight / 2,
@@ -427,10 +416,14 @@ public class RangeSeekBar<T extends Number> extends ImageView {
 
             case MotionEvent.ACTION_DOWN:
                 // Remember where the motion event started
+                //记住 MotionEvent 是从哪开始的,
                 mActivePointerId = event.getPointerId(event.getPointerCount() - 1);
+
                 pointerIndex = event.findPointerIndex(mActivePointerId);
+                //点击的X坐标,
                 mDownMotionX = event.getX(pointerIndex);
 
+                //判断激活的是哪个thumb.
                 pressedThumb = evalPressedThumb(mDownMotionX);
 
                 // Only handle thumb presses.
@@ -574,9 +567,12 @@ public class RangeSeekBar<T extends Number> extends ImageView {
             width = MeasureSpec.getSize(widthMeasureSpec);
         }
 
+        //RangeSeekBar 的高度,要包含 thumb 的高度,文字的高度(是否显示文字),thumb 阴影的高度(是否显示阴影),文字距离底部的距离等.
         int height = thumbImage.getHeight()
                 + (!mShowTextAboveThumbs ? 0 : PixelUtil.dpToPx(getContext(), HEIGHT_IN_DP))
-                + (mThumbShadow ? mThumbShadowYOffset + mThumbShadowBlur : 0);
+                + (mThumbShadow ? mThumbShadowYOffset + mThumbShadowBlur : 0)
+                + PixelUtil.dpToPx(getContext(),(int)textDistanceToBottom);
+
         if (MeasureSpec.UNSPECIFIED != MeasureSpec.getMode(heightMeasureSpec)) {
             height = Math.min(height, MeasureSpec.getSize(heightMeasureSpec));
         }
@@ -596,6 +592,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         paint.setAntiAlias(true);
         float minMaxLabelSize = 0;
 
+        //画RangeSeekBar两头的标签(Min,Max;是否显示)
         if (mShowLabels) {
             // draw min and max labels
             String minLabel = getContext().getString(R.string.demo_min_label);
@@ -728,9 +725,10 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     }
 
     /**
-     * Decides which (if any) thumb is touched by the given x-coordinate.
+     * Decides which (if any) thumb is touched by the given x-coordinate.<br>
+     * 判断哪个 thumb 被触发了,
      *
-     * @param touchX The x-coordinate of a touch event in screen space.
+     * @param touchX The x-coordinate of a touch event in screen space. 屏幕上被触发的thumb的X坐标
      * @return The pressed thumb or null if none has been touched.
      */
     private Thumb evalPressedThumb(float touchX) {
@@ -739,6 +737,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         boolean maxThumbPressed = isInThumbRange(touchX, normalizedMaxValue);
         if (minThumbPressed && maxThumbPressed) {
             // if both thumbs are pressed (they lie on top of each other), choose the one with more room to drag. this avoids "stalling" the thumbs in a corner, not being able to drag them apart anymore.
+            //如果两个thumb同时被点击了,根据哪个还有更大可以拖拽的空间,判断激活哪个thumb.
             result = (touchX / getWidth() > 0.5f) ? Thumb.MIN : Thumb.MAX;
         } else if (minThumbPressed) {
             result = Thumb.MIN;
@@ -752,10 +751,11 @@ public class RangeSeekBar<T extends Number> extends ImageView {
      * Decides if given x-coordinate in screen space needs to be interpreted as "within" the normalized thumb x-coordinate.
      *
      * @param touchX               The x-coordinate in screen space to check.
-     * @param normalizedThumbValue The normalized x-coordinate of the thumb to check.
+     * @param normalizedThumbValue The normalized x-coordinate of the thumb to check.值的范围:{0,1},使用需要转换为屏幕上尺寸
      * @return true if x-coordinate is in thumb range, false otherwise.
      */
     private boolean isInThumbRange(float touchX, double normalizedThumbValue) {
+        //判断触摸的位置与Thumb的位置之间的距离的绝对值与thumb宽度一半的比较,如果真正触摸的位置距离thumb的位置大于它宽度的一般,则不触发事件,
         return Math.abs(touchX - normalizedToScreen(normalizedThumbValue)) <= mThumbHalfWidth;
     }
 

@@ -1,76 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="dimension" />
-        <attr name="border_color" format="color" />
-    </declare-styleable>
-
-    <declare-styleable name="SeekBarPressure">
-        <attr name="minValue" format="integer" />
-        <attr name="maxValue" format="integer" />
-        <attr name="duration" format="integer" />
-        <attr name="width" format="dimension">
-            <enum name="fill_parent" value="-1" />
-            <enum name="match_parent" value="-1" />
-            <enum name="wrap_content" value="-2" />
-        </attr>
-        <attr name="high" format="dimension">
-            <enum name="fill_parent" value="-1" />
-            <enum name="match_parent" value="-1" />
-            <enum name="wrap_content" value="-2" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="DynamicSizeView">
-        <attr name="widthDetermine" format="boolean" />
-        <attr name="radio" format="float" />
-    </declare-styleable>
-
-    <declare-styleable name="StaggeredGridView">
-        <attr name="column_count" format="integer" />
-        <attr name="column_count_portrait" format="integer" />
-        <attr name="column_count_landscape" format="integer" />
-        <attr name="item_margin" format="dimension" />
-        <attr name="grid_paddingLeft" format="dimension" />
-        <attr name="grid_paddingRight" format="dimension" />
-        <attr name="grid_paddingTop" format="dimension" />
-        <attr name="grid_paddingBottom" format="dimension" />
-    </declare-styleable>
-
-    <declare-styleable name="BGAFlowLayout">
-        <!-- 标签之间的水平间距 -->
-        <attr name="fl_horizontalChildGap" format="dimension" />
-        <!-- 标签之间的垂直间距 -->
-        <attr name="fl_verticalChildGap" format="dimension" />
-        <!-- 是否平均分配每一行的剩余水平方向的空白区域给该行的标签 -->
-        <attr name="fl_isDistributionWhiteSpacing" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="LoadingPager">
-        <!-- 标签之间的水平间距 -->
-        <attr name="success_view" format="reference" />
-    </declare-styleable>
-
-    <declare-styleable name="HorizontalProgressBarWithNumber">
-        <attr name="progress_unreached_color" format="color" />
-        <attr name="progress_reached_color" format="color" />
-        <attr name="progress_reached_bar_height" format="dimension" />
-        <attr name="progress_unreached_bar_height" format="dimension" />
-        <attr name="progress_text_size" format="dimension" />
-        <attr name="progress_text_color" format="color" />
-        <attr name="progress_text_offset" format="dimension" />
-        <attr name="progress_text_visibility" format="enum">
-            <enum name="visible" value="0" />
-            <enum name="invisible" value="1" />
-        </attr>
-    </declare-styleable>
-
-    <declare-styleable name="CusSeekBar" >
-        <attr name="min" format="integer" />
-        <attr name="max" format="integer" />
-
-    </declare-styleable>
-
     <!--RangeSeekBar-->
 
     <declare-styleable name="RangeSeekBar">
@@ -91,6 +20,10 @@
 
         <!-- show the currently selected value above each thumb (defaults to true) -->
         <attr name="valuesAboveThumbs" format="boolean"/>
+        <!--文字距离底部的距离-->
+        <attr name="textDistanceToBottom" format="dimension"/>
+        <!--文字距离顶部的距离 padding-->
+        <attr name="textDistanceToTop" format="dimension"/>
 
         <!-- padding on either side on the slider -->
         <attr name="internalPadding" format="dimension"/>
@@ -122,8 +55,6 @@
         <!-- to activate the thumbs and texts when the min and max values are the default ones (defaults to false) -->
         <attr name="activateOnDefaultValues" format="boolean"/>
     </declare-styleable>
-
-
 
 
 </resources>
