@@ -18,7 +18,7 @@
             android:onClick="order"
             />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -50,12 +50,12 @@
             rsb:valuesAboveThumbs="false"
             rsb:barHeight="15dp"
             />
-        <!--rsb:internalPadding="20dp"-->
-        <!--rsb:thumbShadow="true"-->
-        <!--rsb:thumbShadowBlur="3dp"-->
-        <!--rsb:thumbShadowColor="@color/primary_material_light"-->
-        <!--rsb:thumbShadowXOffset="1dp"-->
-        <!--rsb:thumbShadowYOffset="2dp"-->
+        &lt;!&ndash;rsb:internalPadding="20dp"&ndash;&gt;
+        &lt;!&ndash;rsb:thumbShadow="true"&ndash;&gt;
+        &lt;!&ndash;rsb:thumbShadowBlur="3dp"&ndash;&gt;
+        &lt;!&ndash;rsb:thumbShadowColor="@color/primary_material_light"&ndash;&gt;
+        &lt;!&ndash;rsb:thumbShadowXOffset="1dp"&ndash;&gt;
+        &lt;!&ndash;rsb:thumbShadowYOffset="2dp"&ndash;&gt;
 
         <com.example.zbj.progressbardemo.widget.RangeSeekBar
             android:layout_marginTop="5dp"
@@ -128,7 +128,7 @@
             rsb:thumbNormal="@mipmap/ic_launcher"
             rsb:thumbPressed="@mipmap/ic_launcher"
             rsb:barHeight="15dp"
-            />
+            />-->
     </LinearLayout>
 
 </ScrollView>

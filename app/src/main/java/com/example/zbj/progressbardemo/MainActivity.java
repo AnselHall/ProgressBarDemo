@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initViews();
-
-        registerListener();
+//        initViews();
+//
+//        registerListener();
     }
 
     public void order(View view) {
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        tv_min = (TextView) findViewById(R.id.tv_min);
-        tv_max = (TextView) findViewById(R.id.tv_max);
-        rsb_range = (RangeSeekBar) findViewById(R.id.rsb_range);
+//        tv_min = (TextView) findViewById(R.id.tv_min);
+//        tv_max = (TextView) findViewById(R.id.tv_max);
+//        rsb_range = (RangeSeekBar) findViewById(R.id.rsb_range);
     }
 }
